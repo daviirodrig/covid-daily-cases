@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -8,7 +9,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Entry {
+export class Entry extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -20,7 +21,9 @@ export class Entry {
   variant: string;
   @Column()
   num_sequences: number;
-  @Column()
+  @Column({
+    type: 'decimal',
+  })
   perc_sequences: number;
   @Column()
   num_sequences_total: number;
