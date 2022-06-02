@@ -17,7 +17,6 @@ export class GetCasesCountService {
       },
     });
 
-    // throw 404 if no entries found
     if (entries.length === 0) {
       throw new NotFoundException('No entries found');
     }
