@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { EntryRepository } from 'src/shared/repositories/entry.repository';
 
 @Injectable()
-export class CasesService {
+export class GetCasesCountService {
   constructor(
     @InjectRepository(EntryRepository) private entryRepository: EntryRepository,
   ) {}
