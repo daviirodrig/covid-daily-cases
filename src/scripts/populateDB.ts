@@ -23,6 +23,8 @@ async function populateDB(): Promise<void> {
     entry.num_sequences_total = Number(i.num_sequences_total);
 
     await entry.save();
+
+    console.count('Entry saved');
   }
 
   await connection.close();
