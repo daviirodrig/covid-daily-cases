@@ -2,13 +2,17 @@ version: '3'
 
 services:
   db:
-    image: postgres
+    image: cockroachdb/cockroach:v22.1.1
     volumes:
-      - ./local_db:/var/lib/postgresql/data
+      - ./local_cockroach:/cockroach/cockroach-data
     ports:
-      - 5432:5432
+      - 26257:26257
+      - 8080:8080
     env_file:
       - .env
+    command:
+      - start-single-node
+      - --insecure
 
   api:
     build: .
