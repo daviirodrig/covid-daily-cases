@@ -1,5 +1,5 @@
 module.exports = {
-  type: 'postgres',
+  type: 'cockroachdb',
   url: process.env.DATABASE_URL,
   entities: ['dist/**/*.entity.js'],
   ssl: process.env.NODE_ENV === 'production' ? true : false,

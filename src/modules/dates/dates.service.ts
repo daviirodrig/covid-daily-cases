@@ -1,17 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { EntryRepository } from 'src/shared/repositories/entry.repository';
+import { PrismaService } from '../database/prisma.service';
 
 @Injectable()
 export class DatesService {
-  constructor(
-    @InjectRepository(EntryRepository) private entryRepository: EntryRepository,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   async getDates() {
-    const entries = await this.entryRepository.find({
-      order: {
-        date: 'ASC',
+    const entries = await this.prisma.entry.findMany({
+      orderBy: {
+        date: 'asc',
       },
     });
 

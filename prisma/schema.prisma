@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model entry {
+  id                  String    @id(map: "PK_a58c675c4c129a8e0f63d3676d6") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  location            String
+  date                DateTime  @db.Timestamp(6)
+  variant             String
+  num_sequences       BigInt
+  perc_sequences      Decimal   @db.Decimal
+  num_sequences_total BigInt
+  createdAt           DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt           DateTime  @default(now()) @db.Timestamptz(6)
+  deletedAt           DateTime? @db.Timestamptz(6)
+}
