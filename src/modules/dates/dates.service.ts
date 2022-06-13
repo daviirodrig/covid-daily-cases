@@ -10,6 +10,9 @@ export class DatesService {
       orderBy: {
         date: 'asc',
       },
+      select: {
+        date: true,
+      },
     });
 
     const res = {
